@@ -204,6 +204,39 @@
 || 
 || 2 persons found!
 || ===================================================
+|| Enter command: || [Command entered:  get_email]
+||
+|| 0 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  get_email bet]
+||
+|| 0 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  get_email 23912039120]
+||
+|| 0 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  get_email betsy]
+||
+|| 0 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  get_email Betsy]
+|| 	1. Email: benchoo@nus.edu.sg
+||
+|| 1 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  get_email Dickson]
+|| 	1. Email: charlie.d@nus.edu.sg
+|| 	2. Email: dickson@nus.edu.sg
+||
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  get_email Charlie Betsy]
+|| 	1. Email: benchoo@nus.edu.sg
+|| 	2. Email: charlie.d@nus.edu.sg
+||
+|| 2 persons found!
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format: delete 
 || delete: Deletes a person identified by the index number used in the last find/list call.

@@ -62,6 +62,26 @@
   find Charlie Betsy
 
 ##########################################################
+# test get_email command
+##########################################################
+
+  # should match none with no keywords
+  get_email
+  # should only match full words in person names
+  get_email bet
+  # does not match if none have keyword
+  get_email 23912039120
+  # matching should be case-sensitive
+  get_email betsy
+
+  # get unique keyword
+  get_email Betsy
+  # get multiple with same keyword
+  get_email Dickson
+  # get multiple with some keywords
+  get_email Charlie Betsy
+
+##########################################################
 # test delete person command
 ##########################################################
 
