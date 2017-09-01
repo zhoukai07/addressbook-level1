@@ -114,6 +114,12 @@ public class AddressBook {
     private static final String COMMAND_FIND_PARAMETERS = "KEYWORD [MORE_KEYWORDS]";
     private static final String COMMAND_FIND_EXAMPLE = COMMAND_FIND_WORD + " alice bob charlie";
 
+    //Adding new command: Get_EMAIL
+    private static final String COMMAND_GET_EMAIL = "get_email";
+    private static final String COMMAND_GET_EMAIL_DESC = "Get the list of emails which matches the name provided";
+    private static final String COMMAND_GET_EMAIL_PARAMETERS = "KEYWORD [MORE_KEYWORDS]";
+    private static final String COMMAND_GET_EMAIL_EXAMPLE = "kai" + COMMAND_GET_EMAIL;
+
     private static final String COMMAND_LIST_WORD = "list";
     private static final String COMMAND_LIST_DESC = "Displays all persons as a list with index numbers.";
     private static final String COMMAND_LIST_EXAMPLE = COMMAND_LIST_WORD;
@@ -376,6 +382,8 @@ public class AddressBook {
             return executeAddPerson(commandArgs);
         case COMMAND_FIND_WORD:
             return executeFindPersons(commandArgs);
+        case COMMAND_GET_EMAIL:
+            return executeFindPersonsEmail(commandArgs);
         case COMMAND_LIST_WORD:
             return executeListAllPersonsInAddressBook();
         case COMMAND_DELETE_WORD:
@@ -456,6 +464,20 @@ public class AddressBook {
         final Set<String> keywords = extractKeywordsFromFindPersonArgs(commandArgs);
         final ArrayList<HashMap<PersonProperty,String>> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
         showToUser(personsFound);
+        return getMessageForPersonsDisplayedSummary(personsFound);
+    }
+
+    /**
+     * Find and list all the persons in address book whose name contains any of the argument keywords.
+     * Keyword matching is case sensitive.
+     *
+     * @param commandArgs full command args string from the user
+     * @return feedback display message for the operation result
+     */
+    private static String executeFindPersonsEmail(String commandArgs) {
+        final Set<String> keywords = extractKeywordsFromFindPersonArgs(commandArgs);
+        final ArrayList<HashMap<PersonProperty,String>> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
+        showToUser2(personsFound);
         return getMessageForPersonsDisplayedSummary(personsFound);
     }
 
@@ -636,6 +658,17 @@ public class AddressBook {
         String listAsString = getDisplayString(persons);
         showToUser(listAsString);
         updateLatestViewedPersonListing(persons);
+    }
+
+    /**
+     * Shows the list of persons to the user.
+     * The list will be indexed, starting from 1.
+     *
+     */
+    private static void showToUser2(ArrayList<HashMap<PersonProperty,String>> persons) {
+        for (int i = 0; i < persons.size(); i++){
+            System.out.print ( i+1 + " The email is " + persons.get(i).get(PersonProperty.EMAIL) + "\n");
+        }
     }
 
     /**
