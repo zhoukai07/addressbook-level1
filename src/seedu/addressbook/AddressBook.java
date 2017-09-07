@@ -468,7 +468,7 @@ public class AddressBook {
     }
 
     /**
-     * Find and list all the persons in address book whose name contains any of the argument keywords.
+     * Find and list all the emails in address book whose name contains any of the argument keywords.
      * Keyword matching is case sensitive.
      *
      * @param commandArgs full command args string from the user
@@ -666,9 +666,16 @@ public class AddressBook {
      *
      */
     private static void showToUser2(ArrayList<HashMap<PersonProperty,String>> persons) {
+        final StringBuilder getEmailMessage = new StringBuilder();
         for (int i = 0; i < persons.size(); i++){
-            System.out.print ( i+1 + " The email is " + persons.get(i).get(PersonProperty.EMAIL) + "\n");
+            final HashMap<PersonProperty,String> person = persons.get(i);
+            final int displayIndex = i + DISPLAYED_INDEX_OFFSET;
+            getEmailMessage.append(LINE_PREFIX)
+                            .append(LS)
+                            .append(displayIndex + ". Email: ")
+                            .append(person.get(PersonProperty.EMAIL));
         }
+        System.out.print (getEmailMessage.toString() + "\n");
     }
 
     /**
